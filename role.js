@@ -1,4 +1,4 @@
-function Role(_name, _id, _goodGuy, _playerCountFunction, _bonusFunction, _publiclyKnown, _picksPlayerForBonus, special) {
+function Role(_name, _id, _goodGuy, _playerCountFunction, _bonusFunction, _publiclyKnown, _picksPlayerForBonus, _special) {
 	var name = _name;
 	var id = _id;
 	var goodGuy = _goodGuy;
