@@ -1,5 +1,6 @@
-function Role(_name, _id, _goodGuy, _playerCountFunction, _bonusFunction, _publiclyKnown, _picksPlayerForBonus, _special) {
+function Role(_name, _description, _id, _goodGuy, _playerCountFunction, _bonusFunction, _publiclyKnown, _picksPlayerForBonus, _special) {
 	this.name = _name;
+	this.description = _description;
 	this.id = _id;
 	this.goodGuy = _goodGuy;
 	this.getPlayerCount = _playerCountFunction;  // getPlayerCount(players.length)

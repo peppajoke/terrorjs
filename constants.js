@@ -39,11 +39,11 @@ CONSTANT.STAGE.PAUSE = 1;
 CONSTANT.STAGE.VOTE = 2;
 CONSTANT.STAGE.SPECIALS = 3;
 
-CONSTANT.ROLE.VILLAGER = new Role('Villager', CONSTANT.ROLE_ID.VILLAGER, true, function(playerCount) {
+CONSTANT.ROLE.VILLAGER = new Role('Villager', '(GOOD) The default role.  Villagers work together to identify and eliminate the terrors among them.', CONSTANT.ROLE_ID.VILLAGER, true, function(playerCount) {
 	return 999;  //hardcoded, because every unassigned person becomes a villager
 }, null, true, false, false);
 
-CONSTANT.ROLE.ANGEL = new Role('Angel', CONSTANT.ROLE_ID.ANGEL, true, function(playerCount) {
+CONSTANT.ROLE.ANGEL = new Role('Angel', '(GOOD) Can shield a player from death once a day.', CONSTANT.ROLE_ID.ANGEL, true, function(playerCount) {
 	return Math.floor(playerCount * .9);
 }, function (player, options, players, playerSelectionId, godLog, publicLog) {
 	for(var i=0;i<players.length;i++) {
@@ -56,7 +56,7 @@ CONSTANT.ROLE.ANGEL = new Role('Angel', CONSTANT.ROLE_ID.ANGEL, true, function(p
 	}
 }, true, true, true);
 
-CONSTANT.ROLE.COP = new Role('Cop', CONSTANT.ROLE_ID.COP, true, function(playerCount) {
+CONSTANT.ROLE.COP = new Role('Cop', '(GOOD) Can identify another player\'s role, once a day.', CONSTANT.ROLE_ID.COP, true, function(playerCount) {
 	return Math.floor(playerCount * .15);
 }, function (player, options, players, playerSelectionId, godLog, publicLog) {
 	for(var i=0;i<players.length;i++) {
@@ -68,7 +68,7 @@ CONSTANT.ROLE.COP = new Role('Cop', CONSTANT.ROLE_ID.COP, true, function(playerC
 	}
 }, true, true, true);
 
-CONSTANT.ROLE.DREAMER = new Role('Dreamer', CONSTANT.ROLE_ID.DREAMER, true, function(playerCount) {
+CONSTANT.ROLE.DREAMER = new Role('Dreamer', '(GOOD) Recieves random information about other players each night.', CONSTANT.ROLE_ID.DREAMER, true, function(playerCount) {
 	return Math.floor(playerCount * .25);
 }, function (player, options, players, playerSelectionId, godLog, publicLog) {
 	var randomPlayer = Math.round(Math.random * players.length);
@@ -90,7 +90,7 @@ CONSTANT.ROLE.DREAMER = new Role('Dreamer', CONSTANT.ROLE_ID.DREAMER, true, func
 	return "You see nothing.";
 }, true, false, true);
 
-CONSTANT.ROLE.PSYCHO = new Role('Psycho', CONSTANT.ROLE_ID.PSYCHO, true, function(playerCount) {
+CONSTANT.ROLE.PSYCHO = new Role('Vigilante', '(GOOD) Plays for the good guys, but can choose a victim to murder each night.', CONSTANT.ROLE_ID.PSYCHO, true, function(playerCount) {
 	return Math.abs(Math.min(Math.floor(playerCount * .9), .1 * playerCount * Math.random()));
 }, function (player, options, players, playerSelectionId, godLog, publicLog) {
 	for(var i=0;i<players.length;i++) {
@@ -102,6 +102,6 @@ CONSTANT.ROLE.PSYCHO = new Role('Psycho', CONSTANT.ROLE_ID.PSYCHO, true, functio
 	}
 }, true, true, true);
 
-CONSTANT.ROLE.TERROR = new Role('Terror', CONSTANT.ROLE_ID.TERROR, false, function(playerCount) {
+CONSTANT.ROLE.TERROR = new Role('Terror', '(EVIL) Pits the other players against one another while taking one of them each night.', CONSTANT.ROLE_ID.TERROR, false, function(playerCount) {
 	return Math.max(1, Math.floor(playerCount * .25));
 }, null, true, true, false);
