@@ -1,13 +1,9 @@
 function Player(_name, _id) {
-	var name = _name;
-	var id = _id;
-	var currentStatus = CONSTANT.STATUS.NORMAL;
-	var role;
-	var specialTargetPlayerId = -1;
-	var votePlayerId = -1;
-	
-	var exposed = false;
-	var inGame = function () {
-		return Status === CONSTANT.STATUS.NORMAL;
-	}
+	this.name = _name;
+	this.id = _id;
+	this.currentStatus = CONSTANT.STATUS.NORMAL;
+	this.role;
+	this.specialTargetPlayerId = -1;
+	this.votePlayerId = -1;
+	this.exposed = false;
 }

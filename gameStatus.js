@@ -1,16 +1,16 @@
 function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
-	var stage = CONSTANT.STAGE.PAUSE;
-	var day = 1;
+	this.stage = CONSTANT.STAGE.PAUSE;
+	this.day = 1;
 	
-	var gameOver = false;
-	var winner = 0;
+	this.gameOver = false;
+	this.winner = 0;
 	
-	var readyForVote = false; //manually set
-	var finalizeVote = false; //needs to be manually set by the app
-	var finalizeSpecials = false; //needs to be manually set by the app
+	this.readyForVote = false; //manually set
+	this.finalizeVote = false; //needs to be manually set by the app
+	this.finalizeSpecials = false; //needs to be manually set by the app
 	
 	function moveToNextStage() {
-		switch(stage) {
+		switch(this.stage) {
 			case CONSTANT.STAGE.PAUSE:
 				break;
 			case CONSTANT.STAGE.VOTE:
@@ -19,16 +19,16 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 				this.clearVotes();
 				break;
 		}
-		if (stage < CONSTANT.STAGE.SPECIALS) {
-			stage++;
+		if (this.stage < CONSTANT.STAGE.SPECIALS) {
+			this.stage++;
 			return;
 		}
-		stage = CONSTANT.STAGE.PAUSE;
-		day++;
+		this.stage = CONSTANT.STAGE.PAUSE;
+		this.day++;
 	}
 	
 	function checkForStageProgression() {
-		switch(stage) {
+		switch(this.stage) {
 			case CONSTANT.STAGE.PAUSE:
 				if (this.readyForVote) {
 					this.moveToNextStage();
