@@ -9,7 +9,7 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 	this.finalizeVote = false; //needs to be manually set by the app
 	this.finalizeSpecials = false; //needs to be manually set by the app
 	
-	function moveToNextStage() {
+	this.moveToNextStage = function () {
 		switch(this.stage) {
 			case CONSTANT.STAGE.PAUSE:
 				break;
@@ -27,7 +27,7 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 		this.day++;
 	}
 	
-	function checkForStageProgression() {
+	this.checkForStageProgression = function () {
 		switch(this.stage) {
 			case CONSTANT.STAGE.PAUSE:
 				if (this.readyForVote) {
@@ -50,7 +50,7 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 		}
 	}
 	
-	function processVotes() {
+	this.processVotes = function () {
 		var playerVotes = {};
 		for (var i=0;i<_players.length;i++) {
 			var player = _players[i];
@@ -85,7 +85,7 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 		this.moveToNextStage();
 	}
 	
-	function processTerrorVotes() {
+	this.processTerrorVotes = function () {
 		var terrorVotes = {};
 		for (var i=0;i<_players.length;i++) {
 			var player = _players[i];
@@ -121,14 +121,14 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 		}
 	}
 	
-	function clearVotes () {
+	this.clearVotes = function () {
 		for (var i=0;i<_players.length;i++) {
 			_players[i].terrorVotePlayerId = -1;
 			_players[i].votePlayerId = -1;
 		}
 	}
 	
-	function checkForWin() {
+	this.checkForWin = function () {
 		var terrorCount = 0;
 		var innocentCount = 0;
 		for(var i=0;i<_players.length;i++) {
@@ -147,7 +147,7 @@ function GameStatus(_players, _options, _graveyard, _publicLog, _godLog) {
 		}
 	}
 	
-	function processKills() {
+	this.processKills = function () {
 		for(var i=0;i<_players.length;i++) {
 			switch(_players[i].currentStatus) {
 				case CONSTANT.STATUS.MARKEDFORTAKE:

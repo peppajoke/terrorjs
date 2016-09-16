@@ -3,7 +3,7 @@ function Game(_players, _options, _roles) {
 	this.godLog = [];
 	this.graveyard = [];
 	this.narrator = new Narrator(this.publicLog, this.godLog);
-	this.gameStatus = new GameStatus(_players, _options, graveyard, this.publicLog, this.godLog);
+	this.gameStatus = new GameStatus(_players, _options, this.graveyard, this.publicLog, this.godLog);
 	if (typeof _options === 'undefined') { //give the default options
 		_options = {
 			hardcore: false,
@@ -24,6 +24,6 @@ function Game(_players, _options, _roles) {
 	}
 	
 	if (_options.AutoBalance) {
-		narrator.randomizePlayerRoles(_options, _players, _roles);
+		this.narrator.randomizePlayerRoles(_options, _players, _roles);
 	}
 }

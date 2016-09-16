@@ -1,5 +1,5 @@
 function Narrator() {
-	function randomizePlayerRoles(_options, _players, _roles) {
+	this.randomizePlayerRoles = function (_options, _players, _roles) {
 		var roles = _roles;
 		roles.sort(function (a,b) { return a.id-b.id; });
 		var copCount
